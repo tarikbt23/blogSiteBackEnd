@@ -2,9 +2,9 @@ require("express-async-errors")
 const express = require("express")
 const app = express()
 require("dotenv").config()
-require("./src/db/dbConnection")
+require("./src/configuration/database")
 const port = process.env.PORT || 5002
-const router = require("./src/routers")
+const router = require("./src/routes")
 const errorHandlerMiddleware = require("./src/middlewares/errorHandler")
 const cors = require("cors")
 const corsOptions = require("./src/helpers/corsOptions")
@@ -34,18 +34,15 @@ app.use(
 
 app.use("/api", router)
 
-
-
 app.get("/", (req, res) => {
     res.json({
-        message: "Hoş Geldiniz"
+        message: "Welcome"
     })
 })
-
 
 // hata yakalama
 app.use(errorHandlerMiddleware)
 
 app.listen(port, () => {
-    console.log(`Server ${port} portundan çalışıyor ...`);
+    console.log(`Server  is running on port ${port}`);
 })

@@ -5,8 +5,8 @@ const {
   forgetPassword,
   resetCodeCheck,
   resetPassword,
-} = require("./controller");
-const authValidation = require("../../middlewares/validations/auth.validation");
+} = require("../controllers/authController");
+const authValidation = require("../middlewares/validations/auth.validation");
 
 router.post("/login", authValidation.login, login);
 

@@ -1,11 +1,11 @@
-const user = require("../users/model");
+const user = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const Response = require("../../utils/response");
-const APIError = require("../../utils/errors");
-const { createToken, createTemporaryToken, decodedTemporaryToken } = require("../../middlewares/auth");
+const Response = require("../utils/response");
+const APIError = require("../utils/errors");
+const { createToken, createTemporaryToken, decodedTemporaryToken } = require("../middlewares/auth");
 const crypto = require("crypto");
-const sendEmail = require("../../utils/sendMail");
 const moment = require("moment");
+const sendEmail = require("../utils/sendMail");
 
 
 const login = async (req, res) => {
@@ -64,7 +64,7 @@ const login = async (req, res) => {
     const resetCode = crypto.randomBytes(3).toString("hex");
   
     console.log(resetCode);
-  
+
     // await sendEmail({
     //     from: "base.api.proje@outlook.com",
     //     to: userInfo.email,

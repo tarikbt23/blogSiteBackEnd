@@ -13,7 +13,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
 
     return res.status(500).json({
         success: false,
-        message: "Bir hata ile karşılaştık lütfen apinizi kontrol ediniz !"
+        message: "An error was encountered, please check your API service !"
     })
 }
 

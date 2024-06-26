@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middlewares/lib/upload').single('profilePicture');
-const User = require('../app/users/model');
+const upload = require('../multer/multerConfig').single('profilePicture');
+const User = require('../models/userModel');
 const fs = require('fs');
 const path = require('path');
 
-const auth = require('../app/auth/router');
-const user = require('../app/users/router');
-const posts = require('../app/posts/router'); 
+const auth = require('./authRouter');
+const user = require('./userRouter');
+const posts = require('./postRouter'); 
+const comments = require('./postRouter');
 
 router.use(auth); 
 router.use(user); 
 router.use(posts); 
+router.use(comments);
 
 router.post("/upload", upload, (req, res) => {
   if (req.file) {
